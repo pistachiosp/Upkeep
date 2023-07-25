@@ -2,16 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import PostList from "./post/PostList";
-import ListCategories from "./category/ListCategories";
-import UserPosts from "./post/UserPosts";
-import ListUsers from "./user/ListUsers";
-import ListTags from "./tag/ListTags";
-import TagForm from "./tag/TagForm";
-import CategoryForm from "./category/CategoryForm";
-import UserDetails from "./user/UserDetails";
-import PostForm from "./post/PostForm";
-import PostDetails from "./post/PostDetails";
+import Header from "./Header";
 
 const ApplicationViews = ({ isLoggedIn, role }) => {
     return (
@@ -20,11 +11,11 @@ const ApplicationViews = ({ isLoggedIn, role }) => {
                 <Route path="/">
                     <Route
                         index
-                        element={isLoggedIn ? <PostList /> : <Navigate to="/login" />}
+                        element={isLoggedIn ? <Header /> : <Navigate to="/login" />}
                     />
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
-                    <Route path="postDetails/:id" element={<PostDetails />} />
+                    {/* <Route path="postDetails/:id" element={<PostDetails />} />
 
                     <Route path="userposts" element={isLoggedIn ? <UserPosts /> : <Navigate to="/login" />} />
                     <Route path="addpost" element={isLoggedIn ? <PostForm /> : <Navigate to="/login" />} />
@@ -80,7 +71,7 @@ const ApplicationViews = ({ isLoggedIn, role }) => {
                         <Route path=":id" element={<UserDetails />} />
                     </Route>
 
-                    <Route path="*" element={<p>Whoops, nothing here...</p>} />
+                    <Route path="*" element={<p>Whoops, nothing here...</p>} /> */}
                 </Route>
             </Routes>
         </main>
