@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
+import Login from "../auth/Login";
+import Register from "../auth/Register";
 import Header from "./Header";
 
 const ApplicationViews = ({ isLoggedIn, role }) => {

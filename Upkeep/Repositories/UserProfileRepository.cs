@@ -20,7 +20,7 @@ namespace Upkeep.Repositories
                 {
 
                     cmd.CommandText = @"
-                        INSERT INTO UserProfile (Name, Email, FirebaseUserId)
+                        INSERT INTO UserProfile ([Name], Email, FirebaseUserId)
                         OUTPUT INSERTED.ID
                         VALUES (@Name, @Email, @FirebaseUserId)";
 
@@ -41,7 +41,7 @@ namespace Upkeep.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.Id, up.Name, up.Email, up.FirebaseUserId
+                        SELECT up.Id, up.[Name], up.Email, up.FirebaseUserId
                         FROM UserProfile up
                         WHERE FirebaseUserId = @FirebaseuserId";
 
@@ -75,12 +75,12 @@ namespace Upkeep.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.Id, up.Name, up.Email, up.FirebaseUserId
+                        SELECT up.Id, up.[Name], up.Email, up.FirebaseUserId
                         FROM UserProfile up
                         WHERE up.Id = @id";
 
-                    cmd.Parameters.AddWithValue("@id", id);
-
+                    //cmd.Parameters.AddWithValue("@id", id);
+                    DbUtils.AddParameter(cmd, "@id", id);
                     UserProfile userProfile = null;
 
                     var reader = cmd.ExecuteReader();
@@ -111,13 +111,12 @@ namespace Upkeep.Repositories
 
                     cmd.CommandText = @"
                         UPDATE UserProfile
-                        SET Name = @Name,
+                        SET [Name] = @Name,
                             Email = @Email
                         WHERE Id = @id";
 
-                    DbUtils.AddParameter(cmd, "@name", userProfile.Name);
-                    DbUtils.AddParameter(cmd, "@email", userProfile.Email);
-                    DbUtils.AddParameter(cmd, "@id", userProfile.Id);
+                    DbUtils.AddParameter(cmd, "@Name", userProfile.Name);
+                    DbUtils.AddParameter(cmd, "@Email", userProfile.Email);                 
 
                     cmd.ExecuteNonQuery();
                 }

@@ -19,7 +19,7 @@ namespace Upkeep.Models
         public string PropertyAddress { get; set; }
         [DataType(DataType.Url)]
         [MaxLength(255)]
-        public string ImagLocation { get; set; }
-
+        public string PropertyImageUrl { get; set; }
+        public List<UpkeepComponent> Components { get; set; }
     }
 }
