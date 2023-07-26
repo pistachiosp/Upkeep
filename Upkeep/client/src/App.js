@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Spinner } from "reactstrap";
-import { getUserDetails, onLoginStatusChange } from "./authManager";
+import { onLoginStatusChange, getUserDetails } from "./modules/authManager";
 import firebase from "firebase";
-import Header from "./Components/Header";
-import ApplicationViews from "./Components/ApplicationViews";
+import Header from "./components/user/Header";
+import ApplicationViews from "./components/user/ApplicationViews";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null),

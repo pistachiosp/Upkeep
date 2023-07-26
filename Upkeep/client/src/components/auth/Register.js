@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
 import { register } from "../../modules/authManager";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function Register() {
     const navigate = useNavigate();
 
+    const [name, setName] = useState();
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [displayName, setDisplayName] = useState();
@@ -20,6 +22,7 @@ export default function Register() {
             alert("Passwords don't match. Do better.");
         } else {
             const userProfile = {
+                name,
                 firstName,
                 lastName,
                 displayName,
@@ -33,6 +36,14 @@ export default function Register() {
     return (
         <Form onSubmit={registerClick}>
             <fieldset>
+                <FormGroup>
+                    <Label htmlFor="name">Name</Label>
+                    <Input
+                        id="name"
+                        type="text"
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </FormGroup>
                 <FormGroup>
                     <Label htmlFor="firstName">First Name</Label>
                     <Input

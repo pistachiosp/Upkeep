@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../../modules/authManager";
 
-export default function Login() {
+function Login() {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState();
@@ -46,3 +46,4 @@ export default function Login() {
         </Form>
     );
 }
+export default Login;
